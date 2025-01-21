@@ -3,70 +3,61 @@ title: Installation
 description: Installation guide for our application.
 ---
 
-Setting up AriaDocs is straightforward, with options to clone the repository or use the convenient `npx` command. AriaDocs requires [Node.js](https://nodejs.org/) version 18 or higher for optimal performance.
+Setting up Apee-i is straightforward, with options to clone the repository and run `go install` or use the convenient `npm` command. Apee-i 
+requires [Node.js](https://nodejs.org/) version 18 or higher for installation.
 
-## Clone Repository
-To get started, you can clone the AriaDocs repository directly from GitHub. 
+## Clone Repo and Go install
+To get started, you can clone the Apee-i repository directly from GitHub. 
 <Stepper>
-  <StepperItem title="Step 1: Clone the AriaDocs Repository">
-    Begin by cloning the AriaDocs repository from GitHub:
+  <StepperItem title="Step 1: Clone the Apee-i Repository">
+    Begin by cloning the Apee-i repository from GitHub:
 
-    ```plaintext
-    git clone https://github.com/nisabmohd/Aria-Docs.git
+    ```bash
+    git clone https://github.com/apee-i/apee-i.git
     ```
   </StepperItem>
 
   <StepperItem title="Step 2: Access the Project Directory">
     After cloning, navigate into the project directory to start setting up:
 
-    ```plaintext
-    cd Aria-Docs
+    ```bash
+    cd apee-i
     ```
   </StepperItem>
 
-  <StepperItem title="Step 3: Install Required Dependencies">
-    Install all necessary project dependencies with npm:
+  <StepperItem title="Step 3: Install Package">
+   Install **apee-i** using simple `go install` package 
 
     <Note title="Remember">
-      To support React 19, package maintainers will need to test and update their packages to include React 19 as a peer dependency. This is already in progress.
+		To install **apee-i**, you need to have go 1.22 or higher for optimal performance and installation
     </Note>
 
-    ```plaintext
-    npm install
+    ```bash
+    go install
     ```
   </StepperItem>
 
-  <StepperItem title="Step 4: Launch the Development Server">
-    Finally, start the development server to view the project locally:
+  <StepperItem title="Step 4: Verify Installation">
+    Finally, verify if apee-i has installed itself or not.
 
-    ```plaintext
-    npm run dev
+    ```bash
+    apee-i --version
     ```
   </StepperItem>
 </Stepper>
 
-## Quick Setup with npx
+## Quick Installation with npm
 
-For a faster setup, use the `npx` command to create a new AriaDocs project in one step:
+For a faster setup, use the `npm` command to install apee-i:
 
-```plaintext
-npx create-aria-doc <project-directory>
+```bash
+npm install -g apee-i
 ```
 
 **Command Output:**
 
 ```plaintext
-Creating a new AriaDocs project in /path/to/your/project from the master branch...
-Cloning Master (Full Documentation)...
-AriaDocs project successfully created in /path/to/your/project!
-
-Next steps:
-1. Navigate to your project directory:
-   cd <project-directory>
-2. Install dependencies:
-   npm install
-3. Start the development server:
-   npm run dev
+Version X.X.X
 ```
 
-With this setup, you’ll have a ready-to-use AriaDocs instance to start building your documentation.
+With this setup, you’ll have a ready-to-use apee-i instance to start testing your APIs.
