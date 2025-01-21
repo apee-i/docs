@@ -1,0 +1,158 @@
+---
+title: Request Parameters
+description: This section will show all the required and optional values you can give to a request which can be used to hit an API.
+---
+
+<Note title="Note" type="success">
+	Active pipeline is run by default even if you don't set the `--pipeline` flag. Or you can specify it by `--pipeline=current`
+</Note>
+
+## Properties
+
+Every pipeline object has several properties. These properties are used to pass in several parameters into a request. These requests are easily
+modifiable and allows the `apee-i` to do it's magic in the background.
+
+### Endpoint
+
+You can define the endpoint which could be used to hit the API.
+
+<Note title="Note">
+	This is a **REQUIRED** field which must be provided in order for `apee-i` to work.
+</Note>
+
+It can be defined in the configuration files as:
+
+**JSON Based**
+```json
+{
+	"current_pipeline": {
+		"endpoint": "/example"
+	}
+}
+```
+
+**YAML Based**
+```yaml
+current_pipeline:
+	endpoint: /example
+```
+
+### Method
+
+You can define the REST method which could be used to hit the API. It can be defined in the configuration files as:
+
+**JSON Based**
+```json {4}
+{
+	"current_pipeline": {
+		"endpoint": "/example",
+ 		"method": "POST"
+	}
+}
+```
+
+**YAML Based**
+```yaml {3}
+current_pipeline:
+	endpoint: /example
+	method: POST
+```
+
+### Body
+
+For all the methods, other than GET, you can define the body which is by default JSON type body. This will be sent with the request as the body.
+
+**JSON Based**
+```json {5-8}
+{
+	"current_pipeline": {
+		"endpoint": "/example",
+ 		"method": "POST",
+		"body": {
+			"key_1": "value_1",
+			"key_2": "value_2"
+		}
+	}
+}
+```
+
+**YAML Based**
+```yaml {4-7}
+current_pipeline:
+	endpoint: /example
+	method: POST
+	body:
+		key_1: value_1
+		key_2: value_2
+```
+
+### Headers
+
+You can pass in custom headers as you wish by passing them in the header key. This is treated as an object so you can pass in as much as you wish.
+
+**JSON Based**
+```json {9-11}
+{
+	"current_pipeline": {
+		"endpoint": "/example",
+ 		"method": "POST",
+		"body": {
+			"key_1": "value_1",
+			"key_2": "value_2"
+		},
+		"headers": {
+			"x-header": "test_1"
+		}
+	}
+}
+```
+
+**YAML Based**
+```yaml {7-9}
+current_pipeline:
+	endpoint: /example
+	method: POST
+	body:
+		key_1: value_1
+		key_2: value_2
+	headers:
+		x-header: test_1
+```
+
+### Expected Status Code
+
+You can set the status code to whatever you desire, by default **200** is expected for **all** methods but **POST** which expects **201**. If API 
+returns undesired status code, the log will print the results in **red** which is easy to read.
+
+**JSON Based**
+```json {12}
+{
+	"current_pipeline": {
+		"endpoint": "/example",
+ 		"method": "POST",
+		"body": {
+			"key_1": "value_1",
+			"key_2": "value_2"
+		},
+		"headers": {
+			"x-header": "test_1"
+		},
+		"expectedStatusCode": 201
+	}
+}
+```
+
+**YAML Based**
+```yaml {9}
+current_pipeline:
+	endpoint: /example
+	method: POST
+	body:
+		key_1: value_1
+		key_2: value_2
+	headers:
+		x-header: test_1
+	expectedStatusCode: 201
+```
+
+Some more properties are expected to come. If you have any ideas to share feel free to drop them [here](https://github.com/apee-i/apee-i) as an issue.

@@ -1,0 +1,86 @@
+---
+title: Active Pipeline
+description: This is the pipeline that runs by default. All the APIs are executed in a sequence one by one ensuring the desired behaviour.
+---
+
+You can put in it as much API requests as you wish to make in a sequence. This allows you to test mulitple APIs in a sequence and see the desired
+results in a well formatted output on the console of your terminal.
+
+<Note title="Note" type="success">
+	Active/Current pipeline is by-default selected so you don't have to select it manually by passing in the flag. However, you can if you want to
+	by:
+	```bash
+	apee-i --pipeline=current
+	```
+</Note>
+
+## Configuration File
+
+Define it as:
+
+**JSON Based**
+```json {21-27}
+{
+	"baseUrl": {
+		"development": "http://localhost:3000/api",
+		"staging": "https://staging.com/api",
+		"production": "https://production.com/api"
+	},
+	"credentials": {
+		"development": {
+			"email": "john@doe.com",
+			"password": "test-password"
+		},
+		"staging": {
+			"email": "john@doe.com",
+			"password": "test-password"
+		},
+		"production": {
+			"email": "john@doe.com",
+			"password": "test-password"
+		},
+	},
+	"current_pipeline": {
+		"endpoint": "/example",
+ 		"method": "POST",
+		"body": {
+			"key_1": "value_1",
+			"key_2": "value_2"
+		}
+	}
+}
+```
+
+**YAML Based**
+```yaml {17-22}
+baseUrl:
+  development: http://localhost:3000/api
+  staging: http://staging.com/api
+  production: http://production.com/api
+
+credentials:
+  development:
+    email: john@doe.com
+    password: test-password
+  staging:
+    email: john@doe.com
+    password: test-password
+  production:
+    email: john@doe.com
+    password: test-password
+
+current_pipeline:
+	endpoint: /example
+	method: POST
+	body:
+		key_1: value_1
+		key_2: value_2
+```
+
+## Call pipeline
+
+```bash
+apee-i
+```
+
+

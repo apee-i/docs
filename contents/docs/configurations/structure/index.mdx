@@ -1,0 +1,137 @@
+---
+title: Basic File Configurations
+description: This portion defines all the basic requirements of a JSON or YAML file which they must contain in order for Apee-i to function properly.
+---
+
+## Base URL
+
+You can define base URL for your API endpoint so you don't have to right it again and again.
+<Note title="Note" type="warning">
+	You must add the **Base URL** according to the environments even if they are the same. This allows you to have different URLs based on the 
+	environments.
+</Note>
+
+**JSON Based**
+
+```json
+{
+	"baseUrl": {
+		"development": "http://localhost:3000/api",
+		"staging": "https://staging.com/api",
+		"production": "https://production.com/api"
+	}
+}
+```
+
+and the same structure is followed in YAML
+
+**YAML Based**
+
+```yaml
+baseUrl:
+  development: http://localhost:3000/api
+  staging: http://staging.com/api
+  production: http://production.com/api
+```
+
+## Credentials
+
+You can set the body you need to send in order to login the user. This body can contain your test user's email, password, etc. This can also be set according to the environments like so.
+
+**JSON Based**
+```json
+{
+	.
+	.
+	.
+	"credentials": {
+		"development": {
+			"email": "john@doe.com",
+			"password": "test-password"
+		},
+		"staging": {
+			"email": "john@doe.com",
+			"password": "test-password"
+		},
+		"production": {
+			"email": "john@doe.com",
+			"password": "test-password"
+		},
+	}
+}
+```
+
+And in YAML we can do it like...
+
+**YAML Based**
+```yaml
+.
+.
+.
+credentials:
+  development:
+    email: john@doe.com
+    password: test-password
+  staging:
+    email: john@doe.com
+    password: test-password
+  production:
+    email: john@doe.com
+    password: test-password
+```
+<Note title="Note that" type="warning">
+	These fields below are required and `apee-i` won't function properly if these properties are not filled properly.
+</Note>
+At this point, your file should look like this
+
+**JSON Based**
+
+```json
+{
+	"baseUrl": {
+		"development": "http://localhost:3000/api",
+		"staging": "https://staging.com/api",
+		"production": "https://production.com/api"
+	},
+	"credentials": {
+		"development": {
+			"email": "john@doe.com",
+			"password": "test-password"
+		},
+		"staging": {
+			"email": "john@doe.com",
+			"password": "test-password"
+		},
+		"production": {
+			"email": "john@doe.com",
+			"password": "test-password"
+		}
+	}
+}
+```
+
+**YAML Based**
+```yaml
+baseUrl:
+  development: http://localhost:3000/api
+  staging: http://staging.com/api
+  production: http://production.com/api
+
+credentials:
+  development:
+    email: john@doe.com
+    password: test-password
+  staging:
+    email: john@doe.com
+    password: test-password
+  production:
+    email: john@doe.com
+    password: test-password
+```
+
+This setup is enough to give `apee-i` it's basic information. You can now simply add requests to current pipelines which can then be called to 
+test your APIs. Follow the next page to start using your new favourite API client.
+
+
+
+
