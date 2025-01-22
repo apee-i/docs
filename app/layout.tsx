@@ -20,10 +20,10 @@ const monoFont = Space_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "AriaDocs - Template",
-  metadataBase: new URL("https://ariadocs.vercel.app/"),
+  title: "Apee-i - Documentation",
+  metadataBase: new URL("https://apee-i.vercel.app/"),
   description:
-    "This comprehensive documentation template, crafted with Next.js and available as open-source, delivers a sleek and responsive design, tailored to meet all your project documentation requirements.",
+    "lightning-fast command line tool for testing, debugging, and automating API interactions with Go's performance.",
 };
 
 export default function RootLayout({
