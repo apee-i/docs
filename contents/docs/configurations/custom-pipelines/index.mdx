@@ -5,4 +5,119 @@ description: These pipelines can be stored and used to test your APIs. This ensu
 
 You can define as many custom pipelines as you want and then call all of them at once or simply call a single one from all the pre-defined pipelines.
 
+## Sample File
+
+This is a sample file based on which we will be performing our actions and showing you how to define and call custom pipelines in `apee-i`.
+
+**JSON Based**
+```json
+{
+	.
+	.
+	.
+	"custom_pipelines": {
+		"users": [
+			{
+				"endpoint": "/users"
+			},
+			{
+				"endpoint": "/users/1",
+				"method": "PATCH",
+				"body": {
+					"age": 1
+				},
+				"expectedStatusCode": 403
+			},
+			{
+				"endpoint": "/users/1",
+				"method": "PATCH",
+				"body": {
+					"age": 1
+				},
+				"headers": {
+					"x-api-token": "some_random_token"
+				},
+				"expectedStatusCode": 200
+			}
+		],
+		"clubs": [
+			{
+				"endpoint": "/clubs"
+			},
+			{
+				"endpoint": "/clubs",
+				"method": "POST",
+				"body": {
+					"name": "XYZ"
+				}
+			},
+			{
+				"endpoint": "/clubs/2",
+				"method": "DELETE"
+			}
+		]
+	}
+}
+```
+
+**YAML Based**
+```yaml
+.
+.
+.
+custom_pipelines:
+	users:
+		- endpoint: /users
+		- endpoint: /users/1
+		  method: PATCH
+		  body:
+		  	age: 1
+		  expectedStatusCode: 403
+		- endpoint: /users/1
+		  method: PATCH
+		  body:
+		  	age: 1
+		  headers:
+		  	x-api-token: some_random_token
+		  expectedStatusCode: 403
+	clubs:
+		- endpoint: /clubs
+		- endpoint: /clubs
+		  method: POST
+		  body:
+		  	name: XYZ
+		- endpoint: /clubs/2
+		  method: DELETE
+
+```
+
+## Use Apee-i
+
+Now using `apee-i` to call your custom pipelines is fairly easy. You just have to mention the `pipeline` flag and `name` flag to make these calls.
+
+### Single Pipeline
+
+You can call a single pipeline as...
+
+```bash
+apee-i --pipeline=custom --name=<name>
+```
+
+This will call all the users pipeline in the custom pipelines.
+
+```bash
+apee-i --pipeline=custom --name=users
+```
+
+This will call all the clubs pipeline in the custom pipelines.
+
+```bash
+apee-i --pipeline=custom --name=clubs
+```
+
+Or you can simply call all the APIs in the pipelines, meaning it will call the sections in the custom pipelines.
+
+```bash
+apee-i --pipeline=all
+```
 
