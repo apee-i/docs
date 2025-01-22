@@ -129,6 +129,102 @@ credentials:
     password: test-password
 ```
 
+## Login Details
+
+This portion is another important part if you want to use **authentication** in your APIs. Currently `apee-i` only supports **JWT** auth but more 
+are expected to join the party soon 🎉
+
+**JSON Based**
+```json
+{
+	"loginDetails": {
+		"route": "/login",
+		"type": "JWT",
+		"token_location": "data.access_token"
+	}
+}
+```
+**YAML Based**
+```yaml
+loginDetails:
+  route: /login
+  type: JWT
+  token_location: data.access_token
+```
+
+* **route** is the login API endpoint
+* **type** is the authentication type your application uses 
+* **token_location** is the location where the JWT token will be found in response
+
+## Required Structure
+
+This below is the minimum required structure of your configuration file in order to start performing tests on your API endpoints. You can copy the
+below files to get started.
+
+<Note title="File Specify">
+	If you don't define the file specifically, the **apee-i** will assume that your root directory where you are currently working has a file named
+	**api.json**. If you want to use **yaml** structure or your file has other name, you can do that by:
+	```bash
+	apee-i --file=<file_name>.<json|yaml>
+	```
+</Note>
+
+**JSON Based**
+
+```json
+{
+	"baseUrl": {
+		"development": "http://localhost:3000/api",
+		"staging": "https://staging.com/api",
+		"production": "https://production.com/api"
+	},
+	"credentials": {
+		"development": {
+			"email": "john@doe.com",
+			"password": "test-password"
+		},
+		"staging": {
+			"email": "john@doe.com",
+			"password": "test-password"
+		},
+		"production": {
+			"email": "john@doe.com",
+			"password": "test-password"
+		}
+	},
+	"loginDetails": {
+		"route": "/login",
+		"type": "JWT",
+		"token_location": "data.access_token"
+	}
+}
+```
+
+**YAML Based**
+```yaml
+baseUrl:
+  development: http://localhost:3000/api
+  staging: http://staging.com/api
+  production: http://production.com/api
+
+credentials:
+  development:
+    email: john@doe.com
+    password: test-password
+  staging:
+    email: john@doe.com
+    password: test-password
+  production:
+    email: john@doe.com
+    password: test-password
+
+loginDetails:
+  route: /login
+  type: JWT
+  token_location: data.access_token
+```
+
+
 This setup is enough to give `apee-i` it's basic information. You can now simply add requests to current pipelines which can then be called to 
 test your APIs. Follow the next page to start using your new favourite API client.
 
