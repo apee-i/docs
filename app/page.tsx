@@ -19,7 +19,7 @@ export default function Home() {
 	  </h1>
       <p className="mb-8 sm:text-lg max-w-[800px] text-muted-foreground">
 		Lightning-fast command line tool for testing, debugging, and automating
-		API interactions with Go's performance.
+		API interactions with Go&apos;s performance.
       </p>
       <div className="flex flex-row items-center gap-5">
         <Link
